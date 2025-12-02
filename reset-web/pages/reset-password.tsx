@@ -168,7 +168,11 @@ export default function ResetPasswordPage() {
   return (
     <main className={styles.container}>
       <div className={styles.card} role="main">
-        <h1 className={styles.title}>Restablecer contraseña</h1>
+        <div className={styles.headerRow}>
+          <img src="/logo.png" alt="El Arca logo" className={styles.logo} />
+          <div className={styles.orgText}>El Arca en Querétaro I.A.P</div>
+          <h1 className={styles.heroTitle}>Restablecer contraseña</h1>
+        </div>
 
         {!token && (
           <div>
@@ -193,7 +197,7 @@ export default function ResetPasswordPage() {
               Luego de pegar el token, pulsa "Usar token" para continuar.
             </div>
             <div className={styles.actions}>
-              <button className={styles.cta} onClick={onPasteTokenUse}>
+              <button className={`${styles.cta} ${styles.ctaFull}`} onClick={onPasteTokenUse}>
                 Usar token
               </button>
             </div>
@@ -204,9 +208,9 @@ export default function ResetPasswordPage() {
           <div>
             {verifying && <p aria-live="polite">Verificando token…</p>}
             {verifyError && (
-              <div>
+              <div className={styles.centerText}>
                 <p className={styles.error}>Error: {verifyError}</p>
-                <div className={styles.actions}>
+                <div className={styles.actionsCenter}>
                   <button
                     className={styles.button}
                     onClick={() => {
@@ -220,19 +224,18 @@ export default function ResetPasswordPage() {
             )}
 
             {verifyResult && verifyResult.valid === false && (
-              <div>
+              <div className={styles.centerText}>
                 <p className={styles.error}>
-                  {verifyResult.message || 'Token inválido o expirado.'}
+                  {verifyResult.message || '!Token! Invalido intente de nuev'}
                 </p>
-                <p>
-                  <a href="/login">Volver al inicio de sesión</a>
-                </p>
+                <div className={styles.actionsCenter}>
+                  <a className={styles.button} href="/login">Volver al inicio de sesión</a>
+                </div>
               </div>
             )}
 
             {verifyResult && verifyResult.valid === true && (
               <div>
-                <p aria-live="polite">Token verificado. Intentando abrir la app…</p>
 
                 {verifyResult.email && (
                   <div className={styles.field} style={{ marginBottom: 12 }}>
@@ -241,14 +244,7 @@ export default function ResetPasswordPage() {
                   </div>
                 )}
 
-                <div className={styles.actions}>
-                  <a
-                    className={styles.cta}
-                    href={`${APP_SCHEME}://update-password?token=${encodeURIComponent(String(token))}`}
-                  >
-                    Abrir en la app
-                  </a>
-                </div>
+                {/* "Abrir en la app" removed */}
 
                 <div className={styles.hint}>
                   Si la app se abre, continúa allí. Si no, usa el formulario web a
@@ -265,14 +261,7 @@ export default function ResetPasswordPage() {
                       aria-live="polite"
                     >
                       Contraseña actualizada con éxito.
-                      <div className={styles.actions} style={{ marginTop: 8 }}>
-                        <a
-                          className={styles.cta}
-                          href={`${APP_SCHEME}://update-password?token=${encodeURIComponent(String(token))}`}
-                        >
-                          Abrir en la app
-                        </a>
-                      </div>
+                      {/* success action removed: "Abrir en la app" removed */}
                     </div>
                   ) : (
                     <form onSubmit={(e) => onSubmitForm(e)} className={styles.form} noValidate>
@@ -311,7 +300,7 @@ export default function ResetPasswordPage() {
                       {formError && <div className={styles.error}>{formError}</div>}
 
                       <div className={styles.actions}>
-                        <button className={styles.cta} type="submit" disabled={formLoading}>
+                        <button className={`${styles.cta} ${styles.ctaFull}`} type="submit" disabled={formLoading}>
                           {formLoading ? 'Enviando…' : 'Actualizar contraseña'}
                         </button>
                       </div>

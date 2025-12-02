@@ -12,33 +12,44 @@
  */
 import React from 'react';
 import { useRequestReset } from '../hooks/useResetPassword';
+import styles from '../styles/reset.module.css';
 
 export default function RequestResetPage() {
   const { state, setEmail, submit } = useRequestReset();
 
   return (
-    <main style={{ padding: 20, maxWidth: 640, margin: '0 auto' }}>
-      <h1>Solicitar recuperación de contraseña</h1>
-      <p>Ingresa tu correo para recibir instrucciones para restablecer tu contraseña.</p>
+    <main className={styles.container}>
+      <div className={styles.card}>
+        <div className={styles.headerRow}>
+          <img src="/logo.png" alt="El Arca logo" className={styles.logo} />
+        </div>
 
-      <div style={{ marginTop: 12 }}>
-        <label htmlFor="email">Correo</label>
-        <input
-          id="email"
-          type="email"
-          value={state.email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ display: 'block', width: '100%', padding: 8, marginTop: 6 }}
-        />
-      </div>
+        <h2 className={styles.heroTitle}>
+          <a className={styles.heroLink} href="#">¿Olvidaste tu contraseña?</a>
+        </h2>
 
-      {state.error && <div style={{ color: 'crimson', marginTop: 8 }}>{state.error}</div>}
-      {state.info && <div style={{ color: 'green', marginTop: 8 }}>{state.info}</div>}
+        <p className={styles.hint} style={{marginTop:42}}>Ingresa tu correo electrónico</p>
 
-      <div style={{ marginTop: 12 }}>
-        <button onClick={() => submit()} disabled={state.loading}>
-          {state.loading ? 'Enviando…' : 'Enviar correo de recuperación'}
-        </button>
+        <div className={styles.field} style={{ marginTop: 12}}>
+          <label className={styles.label} htmlFor="email"></label>
+          <input
+            id="email"
+            type="email"
+            placeholder="E.G. ejemplo@correo.com"
+            value={state.email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={styles.input}
+          />
+        </div>
+
+        {state.error && <div className={styles.error}>{state.error}</div>}
+        {state.info && <div className={styles.success}>{state.info}</div>}
+
+        <div className={styles.actions}>
+          <button className={`${styles.cta} ${styles.ctaFull}`} onClick={() => submit()} disabled={state.loading}>
+            {state.loading ? 'Enviando…' : 'Enviar Correo'}
+          </button>
+        </div>
       </div>
     </main>
   );

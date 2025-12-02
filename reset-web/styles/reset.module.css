@@ -1,196 +1,142 @@
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  min-height: 100vh;
-  background: #f4f7fb;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
 }
 
-.card {
-  width: 100%;
-  max-width: 520px;
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 8px 22px rgba(10, 10, 10, 0.07);
+:root{
+  --bg: #000000; /* page background - very dark */
+  --card: linear-gradient(180deg,#0a142c 0%,#0a142c 100%); /* deep navy card */
+  --muted: #9aa3b8; /* muted helper text */
+  --input-bg: rgba(255,255,255,0.03);
+  --input-border: rgba(79,93,181,0.22); /* soft blue outline */
+  --accent: #3555C8; 
+  --accent-cta: #3555C8; 
+  --cta-text: #ffffff;
+  --title: #ffffff;
+  --label: rgba(255,255,255,0.78);
 }
 
-.title {
-  font-size: 20px;
-  margin: 0 0 12px 0;
+/* Base layout */
+.container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background: var(--bg);
+  font-family: 'Poppins', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-.label {
-  display: block;
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.input {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 8px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  box-sizing: border-box;
-}
-
-.field {
-  margin-bottom: 12px;
-}
-
-.formWrapper {
-  margin-top: 16px;
-}
-
-.actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
-
-.cta {
-  background: #0066ff;
-  color: white;
+.card{
+  width:100%;
+  max-width:400px;
+  background: var(--card);
+  border-radius:24px;
+  padding:28px 22px;
+  box-shadow: 0 16px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
   border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
 }
 
-.button {
-  border: 1px solid #cbd5e1;
-  background: white;
-  padding: 10px 12px;
-  border-radius: 8px;
-  cursor: pointer;
+.card p{
+  color: var(--label);
 }
 
-.buttonAlt {
-  border: 1px dashed #cbd5e1;
-  background: white;
-  padding: 10px 12px;
-  border-radius: 8px;
-  cursor: pointer;
+.card label{
+  color: var(--label);
+  font-size:13px;
+  margin:0 0 6px 0;
+  display:block;
+  font-weight:600;
 }
 
-.hint {
-  color: #6b7280;
-  font-size: 13px;
-  margin-top: 8px;
+.title{
+  color:var(--title);
+  font-size:28px;
+  line-height:1.05;
+  margin:0 0 18px 0;
+  font-weight:700;
 }
 
-.error {
-  color: #b91c1c;
-  margin-top: 8px;
+.label{
+  color:var(--label);
+  font-size:13px;
+  margin:0 0 6px 0;
+  display:block;
 }
 
-.success {
-  color: #065f46;
-  font-weight: 600;
+.input{
+  width:100%;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid var(--input-border);
+  background:var(--input-bg);
+  color:var(--title);
+  outline:none;
+  box-sizing:border-box;
+  font-size:15px;
+  font-weight:400; /* Poppins Regular */
+  background-image: none;
 }
 
-.form {
-  margin-top: 12px;
+.field{margin-bottom:14px}
+
+.formWrapper{margin-top:12px}
+
+.actions{display:flex;gap:10px;margin-top:14px}
+
+.cta{
+  background: linear-gradient(180deg,var(--accent),var(--accent-cta));
+  color:var(--cta-text);
+  padding:12px 18px;
+  border-radius:12px;
+  text-decoration:none;
+  border:none;
+  font-weight:700; /* Poppins Bold */
+  cursor:pointer;
 }
 
-@media (max-width: 520px) {
-  .card {
-    border-radius: 6px;
-    padding: 16px;
-  }
-
-  .cta,
-  .button {
-    padding: 8px 10px;
-  }
-}
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  min-height: 100vh;
-  background: #f7fafc;
+.button{
+  background:transparent;
+  color:var(--label);
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.04);
+  font-weight:600; /* Poppins SemiBold for secondary buttons */
 }
 
-.card {
-  width: 100%;
-  max-width: 480px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.08);
-  padding: 20px;
+.hint{color:var(--muted);font-size:13px;margin-top:8px}
+
+.error{color:#ff7b7b;margin-top:8px}
+
+.success{color:#9ef0c3;font-weight:600}
+
+.form{margin-top:12px}
+
+@media (max-width:420px){
+  .card{border-radius:18px;padding:20px}
+  .title{font-size:22px}
 }
 
-.title {
-  font-size: 20px;
-  margin: 0 0 12px 0;
+/* Header / hero variations for request-reset page */
+.headerRow{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:8px}
+.backIcon{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,0.03);color:var(--title);text-decoration:none}
+.orgText{font-size:12px;color:var(--muted);margin:0 0 8px 0;text-align:center}
+.heroTitle{color:var(--title);font-size:22px;line-height:1.05;margin:6px 0 12px 0;font-weight:700;text-align:center}
+.heroLink{color:var(--title);text-decoration:none;display:inline-block}
+
+.ctaFull{display:block;width:100%;border-radius:12px;padding:14px 18px;text-align:center;font-size:16px}
+
+.input::placeholder{color:rgba(255,255,255,0.35)}
+
+.logo{display:block;width:160px;height:auto;margin:6px 0 16px 0;filter:brightness(0) saturate(100%) invert(1);transition:filter .12s ease}
+
+@media (max-width:420px){
+  .logo{width:140px}
 }
 
-.actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
+.centerText { text-align: center; }
+.actionsCenter { display:flex; justify-content:center; gap:10px; margin-top:14px }
 
-.cta {
-  background: #0066ff;
-  color: white;
-  padding: 10px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.button {
-  border: 1px solid #d1d5db;
-  background: white;
-  padding: 10px 12px;
-  border-radius: 8px;
-}
-
-.buttonAlt {
-  border: 1px dashed #cbd5e1;
-  background: white;
-  padding: 10px 12px;
-  border-radius: 8px;
-}
-
-.formWrapper {
-  margin-top: 16px;
-}
-
-.field {
-  margin-bottom: 10px;
-}
-
-.form input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-}
-
-.error {
-  color: #b91c1c;
-  margin-top: 8px;
-}
-
-.hint {
-  color: #6b7280;
-}
-
-.success {
-  color: #065f46;
-}
-
-.debug {
-  margin-top: 14px;
-  font-size: 14px;
-}
