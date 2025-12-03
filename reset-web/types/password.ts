@@ -1,4 +1,4 @@
 export type VerifyTokenResponse = {
-  valid: boolean;
-  email?: string | null;
+    valid: boolean;
+    email?: string | null;
 };
