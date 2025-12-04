@@ -2,10 +2,13 @@
     "name": "reset-web",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": "18.x"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start": "next start -p 8081",
         "lint": "next lint",
         "test": "jest",
         "format": "prettier --write \"**/*.{js,ts,tsx,css,json,md}\""
